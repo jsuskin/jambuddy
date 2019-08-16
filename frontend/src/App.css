@@ -1,0 +1,285 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.header {
+  /* position: fixed; */
+  width: 100vw;
+  height: 9vh;
+  z-index: 1;
+  background-color: #469CC8;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.messages {
+  text-align: center;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  width: 49vw;
+}
+
+Table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #469CC8;
+  color: white;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) {
+  color: #469CC8;
+}
+
+.inbox-header {
+  color: #469CC8;
+}
+
+thead {
+  color: #469CC8;
+}
+
+/* .main-display {
+  position: relative;
+  top: 9vh;
+} */
+
+.greeting {
+  display: flex;
+  margin: 8px;
+  color: white;
+}
+
+.logo {
+  margin: 8px;
+  margin-right: auto;
+  color: white;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  height: 91vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-display {
+  display: flex;
+  flex-wrap: wrap;
+  /* padding: 0 4px; */
+  flex: 100vw;
+  max-width: 100vw;
+  height: 91vh;
+}
+
+/* .logout-btn {
+  margin: 15px;
+  color: #469CC8;
+  background-color: white;
+  font-size: 12px;
+  border-radius: 8px;
+} */
+
+.header-btn {
+  margin: 12px;
+  color: #469CC8;
+  background-color: white;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.map-display {
+  /* background-color: rgb(0,0,180); */
+}
+
+.profile {
+  /* background-color: rgb(0,180,0); */
+}
+
+.main-display-child {
+  /* margin-top: 8px; */
+  vertical-align: middle;
+  flex: 50%;
+  max-width: 50%;
+}
+
+.user-avatar {
+  float: left;
+  background-color: #ff6;
+  margin: 22px;
+  border: 6px solid #469CC8;
+  border-radius: 13px;
+  max-width: 25%;
+  height: 135px;
+}
+
+.user-info {
+  margin-left: 13px;
+  padding-bottom: 16px;
+}
+
+.user-address {
+  padding-right: 38px;
+  text-align: right;
+  font-style: oblique;
+  font-weight: lighter;
+}
+
+.username {
+  font-size: 54px;
+}
+
+input:not(.submit) {
+  border: 3px solid #469CC8;
+  border-radius: 10px;
+  padding: 6px 144px;
+  margin: 8px;
+}
+
+
+input {
+  text-align: center;
+}
+
+.submit {
+  background-color: #469CC8;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.scroll-container {
+  width: 19.5vw;
+  margin: 18px;
+  padding: 16px;
+  border: 4px solid #469CC8;
+  border-radius: 10px;
+  float: left;
+  text-align: center;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.scroller {
+  margin: 0 auto;
+  height: 200px;
+  width: 19.5vw;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+.item {
+  padding: 5px;
+  text-align: center;
+}
+
+.blue-item {
+  background-color: #469CC8;
+  color: white;
+}
+
+.white-item {
+  color: #469CC8;
+}
+
+.interaction-buttons {
+  /* float: left; */
+  text-align: center;
+}
+
+.messages-link {
+  margin: 12px 2px 0 11px;
+  cursor: pointer;
+}
+
+.availability-entry {
+  cursor: pointer;
+}
+
+.interaction-btn {
+  width: 155px;
+  height: 58px;
+  margin: 18px;
+  background-color: #469CC8;
+  color: white;
+  font-size: 20px;
+  border-radius: 14px;
+}
+
+.scrollers {
+
+}
+
+.edit-profile-form {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #469CC8;
+  /* border: 4px solid black; */
+  width: 49vw;
+}
+
+select {
+  margin: 5px;
+}
+
+.time-select {
+  display: inline-block;
+}
+
+.availability-selection {
+
+}
+
+.time-select-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weekday-availability-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

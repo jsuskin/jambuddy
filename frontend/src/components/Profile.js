@@ -1,0 +1,24 @@
+import React, { Component } from 'react';
+import UserInfo from './UserInfo';
+import UserAvailability from './UserAvailability';
+import InstrumentList from './InstrumentList';
+import Interactions from './Interactions';
+
+export default class Profile extends Component {
+  render() {
+    return (
+      <div className="main-display-child profile">
+        <img className="user-avatar"
+          src={this.props.currentProfile ? this.props.currentProfile.image : null}
+          alt="user avatar"
+        />
+        <UserInfo currentProfile={this.props.currentProfile} userAddress={this.props.userAddress} />
+        <div className="scrollers">
+          <UserAvailability currentProfile={this.props.currentProfile} currentUser={this.props.currentUser} handleJamRequest={this.props.handleJamRequest} />
+          <InstrumentList />
+        </div>
+        <Interactions currentProfile={this.props.currentProfile} currentUser={this.props.currentUser} />
+      </div>
+    )
+  }
+}
