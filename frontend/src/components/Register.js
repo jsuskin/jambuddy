@@ -89,8 +89,6 @@ export default class Register extends Component {
   }
 
   render() {
-    // console.log(this.state.new_user_id);
-    console.log(this.state.password);
     return (
       <div className="form">
         <form onSubmit={this.handleRegister}>
@@ -104,7 +102,7 @@ export default class Register extends Component {
           <input type="password" name="confirmation" id="confirmation" onChange={this.handleChange}/>
           <br />
           <label htmlFor="image-url">Link to Image (optional)</label><br />
-          <input type="text" name="image-url" id="image-url" onChange={this.handleChange} />
+          <input type="url" name="image-url" id="image-url" onChange={this.handleChange} />
           <br />
           <input type="submit" />
         </form>

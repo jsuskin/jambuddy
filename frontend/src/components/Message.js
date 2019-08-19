@@ -6,8 +6,8 @@ export default function Message(props) {
     <div className="message">
       <h2>{props.currentMessage.subject}</h2>
       <h6>from: {props.sender.username}</h6>
-      <p>{props.currentMessage.body}</p>
-      <button>Reply</button>
+      <div className="message-body"><p>{props.currentMessage.body}</p></div>
+      <button className="msgs-btn reply-btn">Reply</button>
     </div>
   )
 }

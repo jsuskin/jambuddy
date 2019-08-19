@@ -3,12 +3,12 @@ require 'json'
 class UsersController < ApplicationController
   def index
     users = User.all
-    render json: users, include: [{user_location: {only: [:latitude, :longitude]}}, {user_availabilities: {only: [:day_of_week, :start_time, :end_time, :id]}}, {sent_messages: {only: [:subject, :body, :receiver_id]}}, {received_messages: {only: [:subject, :body, :sender_id]}}]
+    render json: users, include: [{user_location: {only: [:latitude, :longitude]}}, {user_availabilities: {only: [:day_of_week, :start_time, :end_time, :id]}}, {sent_messages: {only: [:subject, :body, :receiver_id, :created_at]}}, {received_messages: {only: [:subject, :body, :sender_id, :created_at]}}]
   end
 
   def show
     user = User.find(params[:id])
-    render json: user, include: [{user_location: {only: [:latitude, :longitude]}}, {user_availabilities: {only: [:day_of_week, :start_time, :end_time, :id]}}, {sent_messages: {only: [:subject, :body, :receiver_id]}}, {received_messages: {only: [:subject, :body, :sender_id]}}]
+    render json: user, include: [{user_location: {only: [:latitude, :longitude]}}, {user_availabilities: {only: [:day_of_week, :start_time, :end_time, :id]}}, {sent_messages: {only: [:subject, :body, :receiver_id, :created_at]}}, {received_messages: {only: [:subject, :body, :sender_id, :created_at]}}]
   end
 
   def create

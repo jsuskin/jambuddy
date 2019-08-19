@@ -25,6 +25,21 @@
   color: #469CC8;
 }
 
+.message-body, .message-body > p {
+  display: block;
+}
+
+.message-body {
+  width: 43vw;
+  border: dotted 1px #469CC8;
+  border-radius: 9px;
+  padding: 0;
+}
+
+.message-body > p {
+  padding: 13px;
+}
+
 Table {
   width:95%;
   margin-left:2.5%;
@@ -146,7 +161,6 @@ input:not(.submit) {
   margin: 8px;
 }
 
-
 input {
   text-align: center;
 }
@@ -221,7 +235,45 @@ input {
   border-radius: 14px;
 }
 
-.compose-new-msg-btn {
+.msgs-btns {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.msgs-btn {
+  width: 100px;
+  height: 37px;
+  margin: 18px;
+  background-color: #469CC8;
+  color: white;
+  font-size: 12px;
+  border-radius: 9px;
+  /* float: right; */
+}
+
+.new-message-form {
+  /* text-align: left; */
+  float: left;
+}
+
+#body {
+  height: 120px;
+}
+
+button {
+  cursor: pointer;
+}
+
+textarea {
+  width: 19.5vw;
+  margin: 18px;
+  padding: 16px;
+  border: 3px solid #469CC8;
+  border-radius: 10px;
+  float: left;
+}
+
+/* .reply-btn {
   width: 100px;
   height: 37px;
   margin: 18px;
@@ -230,7 +282,7 @@ input {
   font-size: 12px;
   border-radius: 9px;
   float: right;
-}
+} */
 
 .scrollers {
 

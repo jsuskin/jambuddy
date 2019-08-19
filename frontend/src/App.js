@@ -82,6 +82,10 @@ export default class App extends Component {
     this.setState({ view: 'messages' })
   }
 
+  handleNewMessage = () => {
+    this.setState({ view: 'new message' })
+  }
+
   handleJamRequest = e => {
     console.log(e.target.textContent);
     if(this.props.currentUser === this.props.currentProfile) {
@@ -101,11 +105,12 @@ export default class App extends Component {
     if(!this.state.currentUser) {
       return this.state.view === 'register' ? <Register /> : <Login handleSubmit={this.handleSubmit} />
     } else {
-      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} handleJamRequest={this.handleJamRequest} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} />
+      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} handleJamRequest={this.handleJamRequest} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} handleNewMessage={this.handleNewMessage} />
     }
   }
 
   render() {
+    if(this.state.users[0]) console.log(this.state.users[0].created_at);
     return (
       <div>
         <Header currentUser={this.state.currentUser} handleLogoClick={this.handleLogoClick} handleLogout={this.handleLogout} renderRegister={this.renderRegister} handleEditProfile={this.handleEditProfile} handleGetMessages={this.handleGetMessages} />

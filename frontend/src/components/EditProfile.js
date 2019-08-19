@@ -41,7 +41,6 @@ export default class EditProfile extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="edit-profile-form">
         <form onSubmit={this.handleUpdateProfile}>
