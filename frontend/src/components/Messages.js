@@ -9,6 +9,7 @@ export default class Messages extends Component {
     return (
       <div className="main-display-child messages">
         <h2 className="inbox-header">Inbox for {this.props.currentUser.username}</h2>
+        <button className="compose-new-msg-btn">Compose New</button>
         <div className="messages-list">
           <Table className="table-striped">
             <thead>
@@ -20,30 +21,17 @@ export default class Messages extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>eat a bag of shit</td>
-                <td>{users[Math.floor(Math.random() * users.length)].username}</td>
-                <td>{Date(Date.now()).split(' ').slice(0,5).join(' ')}</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>eat a bag of dicks</td>
-                <td>{users[Math.floor(Math.random() * users.length)].username}</td>
-                <td>{Date(Date.now()).split(' ').slice(0,5).join(' ')}</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>eat a bag of corn chips</td>
-                <td>{users[Math.floor(Math.random() * users.length)].username}</td>
-                <td>{Date(Date.now()).split(' ').slice(0,5).join(' ')}</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>eat a bag of hammers</td>
-                <td>{users[Math.floor(Math.random() * users.length)].username}</td>
-                <td>{Date(Date.now()).split(' ').slice(0,5).join(' ')}</td>
-              </tr>
+              {this.props.currentUser.received_messages.map(msg => {
+                const inboxId = this.props.currentUser.received_messages.indexOf(msg) + 1;
+                return (
+                  <tr className="inbox-row" key={inboxId} id={msg.subject} onClick={this.props.handleViewMessage}>
+                    <td>{inboxId}</td>
+                    <td>{msg.subject}</td>
+                    <td>{users.find(user => user.id === msg.sender_id).username}</td>
+                    <td>{Date(Date.now()).split(' ').slice(0,5).join(' ')}</td>
+                  </tr>
+                )
+              })}
             </tbody>
           </Table>
         </div>

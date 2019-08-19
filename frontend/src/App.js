@@ -11,6 +11,7 @@ export default class App extends Component {
     users: [],
     currentUser: null,
     currentProfile: null,
+    currentMessage: null,
     userAddress: '',
     view: 'login'
   }
@@ -61,6 +62,14 @@ export default class App extends Component {
     })
   }
 
+  handleViewMessage = e => {
+    // console.log(e.currentTarget.id);
+    this.setState({
+      currentMessage: this.state.currentUser.received_messages.find(msg => msg.subject === e.currentTarget.id),
+      view: 'message'
+    })
+  }
+
   handleLogout = () => {
     this.setState({ currentUser: null, currentProfile: null })
   }
@@ -92,7 +101,7 @@ export default class App extends Component {
     if(!this.state.currentUser) {
       return this.state.view === 'register' ? <Register /> : <Login handleSubmit={this.handleSubmit} />
     } else {
-      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} handleJamRequest={this.handleJamRequest} currentView={this.state.view} />
+      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} handleJamRequest={this.handleJamRequest} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} />
     }
   }
 

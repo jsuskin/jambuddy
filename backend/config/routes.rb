@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :user_availabilities
   resources :user_locations
   resources :users
