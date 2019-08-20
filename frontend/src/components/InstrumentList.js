@@ -6,7 +6,7 @@ export default class InstrumentList extends Component {
   render() {
     return (
       <div className="scroll-container">
-          <h2 className="white-item">Instrument List</h2>
+          <h2 className="white-item instrument-list-header">Instrument List</h2>
           <div className="scroller">
             {instruments.map(item => {
               return (

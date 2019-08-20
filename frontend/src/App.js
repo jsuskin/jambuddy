@@ -13,7 +13,8 @@ export default class App extends Component {
     currentProfile: null,
     currentMessage: null,
     userAddress: '',
-    view: 'login'
+    view: 'login',
+    msgClass: 'received messages'
   }
 
   componentDidMount() {
@@ -25,9 +26,11 @@ export default class App extends Component {
   }
 
   getAddress() {
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentProfile.user_location ? this.state.currentProfile.user_location.latitude : 40.7},${this.state.currentProfile.user_location ? this.state.currentProfile.user_location.longitude : -74}&key=${process.env.REACT_APP_GOOGLE_KEY}`).then(res => res.json()).then(data => this.setState({
-    userAddress: data.results[0].formatted_address
-    }))
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentProfile.user_location ? this.state.currentProfile.user_location.latitude : 40.7},${this.state.currentProfile.user_location ? this.state.currentProfile.user_location.longitude : -74}&key=${process.env.REACT_APP_GOOGLE_KEY}`)
+      .then(res => res.json())
+      .then(data => this.setState({
+        userAddress: data.results[0].formatted_address
+      }))
   }
 
   handleSubmit = e => {
@@ -63,11 +66,27 @@ export default class App extends Component {
   }
 
   handleViewMessage = e => {
-    // console.log(e.currentTarget.id);
     this.setState({
-      currentMessage: this.state.currentUser.received_messages.find(msg => msg.subject === e.currentTarget.id),
+      currentMessage: this.state.msgClass === 'received messages' ? this.state.currentUser.received_messages.find(msg => msg.subject === e.currentTarget.id) : this.state.currentUser.sent_messages.find(msg => msg.subject === e.currentTarget.id),
       view: 'message'
     })
+  }
+
+  handleViewMsgClass = e => {
+    switch(e.target.textContent) {
+      case 'Sent':
+        this.setState({
+          msgClass: 'sent messages'
+        });
+        break;
+      case 'Inbox':
+        this.setState({
+          msgClass: 'received messages'
+        });
+        break;
+      default:
+        return;
+    }
   }
 
   handleLogout = () => {
@@ -79,7 +98,7 @@ export default class App extends Component {
   }
 
   handleGetMessages = () => {
-    this.setState({ view: 'messages' })
+    this.setState({ view: 'messages', msgClass: 'received messages' })
   }
 
   handleNewMessage = () => {
@@ -105,12 +124,13 @@ export default class App extends Component {
     if(!this.state.currentUser) {
       return this.state.view === 'register' ? <Register /> : <Login handleSubmit={this.handleSubmit} />
     } else {
-      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} handleJamRequest={this.handleJamRequest} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} handleNewMessage={this.handleNewMessage} />
+      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} handleJamRequest={this.handleJamRequest} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} handleNewMessage={this.handleNewMessage} handleViewMsgClass={this.handleViewMsgClass} msgClass={this.state.msgClass} />
     }
   }
 
   render() {
-    if(this.state.users[0]) console.log(this.state.users[0].created_at);
+    console.log(this.state.currentUser);
+    // if(this.state.users[0]) console.log(this.state.users[0].created_at);
     return (
       <div>
         <Header currentUser={this.state.currentUser} handleLogoClick={this.handleLogoClick} handleLogout={this.handleLogout} renderRegister={this.renderRegister} handleEditProfile={this.handleEditProfile} handleGetMessages={this.handleGetMessages} />

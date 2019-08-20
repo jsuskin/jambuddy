@@ -1,10 +1,13 @@
+require 'faker'
+
 UserLocation.destroy_all
 UserAvailability.destroy_all
+Message.destroy_all
 User.destroy_all
 
 # USERS
 (0..150).each do |i|
-  User.create(username: Faker::Twitter.user[:screen_name], password: "peanuts", image: Faker::Avatar.image)
+  User.create(username: Faker::Twitter.user[:screen_name], password: "peanuts", image: Faker::Avatar.image, bio: Faker::Hipster.paragraph_by_chars(characters: rand(200..1600), supplemental: true))
 end
 
 # USER_LOCATIONS
@@ -24,4 +27,12 @@ end
   end
   minutes = ['00', '15', '30', '45']
   UserAvailability.create(user_id: User.all.sample.id, day_of_week: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].sample, start_time: "#{some_random_start_time}:#{minutes.sample}", end_time: "#{some_random_end_time}:#{minutes.sample}")
+end
+
+# MESSAGES
+1000.times do
+  sender = User.all.sample
+  arr = User.all - [*sender]
+  receiver = arr.sample
+  Message.create(subject: Faker::Hipster.sentences(number: 1)[0], body: Faker::Hipster.paragraph_by_chars(characters: rand(200..1600), supplemental: true), sender_id: sender.id, receiver_id: receiver.id)
 end

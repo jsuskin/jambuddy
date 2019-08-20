@@ -17,7 +17,7 @@ export default class Profile extends Component {
           <UserAvailability currentProfile={this.props.currentProfile} currentUser={this.props.currentUser} handleJamRequest={this.props.handleJamRequest} />
           <InstrumentList />
         </div>
-        <Interactions currentProfile={this.props.currentProfile} currentUser={this.props.currentUser} handleNewMessage={this.props.handleNewMessage} />
+        {/*<Interactions currentProfile={this.props.currentProfile} currentUser={this.props.currentUser} handleNewMessage={this.props.handleNewMessage} />*/}
       </div>
     )
   }

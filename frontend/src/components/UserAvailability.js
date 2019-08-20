@@ -20,7 +20,7 @@ class UserAvailability extends Component {
 
     return (
       <div className="scroll-container">
-          <h2 className="white-item">Current Availability</h2>
+          <h2 className="white-item current-availability-header">Current Availability</h2>
           <div className="scroller">
             {sortedDates.map(date => {
               return (
