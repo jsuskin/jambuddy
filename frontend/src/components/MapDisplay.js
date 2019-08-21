@@ -20,7 +20,7 @@ function Map(latLng) {
       defaultZoom={13}
       defaultCenter={{ lat: latLng.lat, lng: latLng.lng }}
     >
-      <Marker key="user-location" position={{ lat: latLng.lat, lng: latLng.lng }} icon={icon(currentUser)} onClick={() => handleClick(currentUser)} />
+      <Marker key="user-location" position={{ lat: latLng.lat, lng: latLng.lng }} icon={icon(currentUser)} onClick={() => handleClick(currentUser)} animation={window.google.maps.Animation.DROP} />
       {users.map(user => {
         return user === currentUser ? null : (
         <Marker
@@ -28,6 +28,7 @@ function Map(latLng) {
           position={{ lat: user.user_location.latitude, lng: user.user_location.longitude }}
           icon={icon(user)}
           onClick={() => handleClick(user)}
+          animation={window.google.maps.Animation.DROP}
         />
         )
       })}

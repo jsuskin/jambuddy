@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_204214) do
+ActiveRecord::Schema.define(version: 2019_08_21_185628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "jam_requests", force: :cascade do |t|
+    t.string "weekday"
+    t.string "month"
+    t.integer "day"
+    t.integer "year"
+    t.string "start_time"
+    t.string "end_time"
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", default: "Pending"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string "subject"

@@ -12,9 +12,9 @@ export default class Profile extends Component {
           src={this.props.currentProfile ? this.props.currentProfile.image : null}
           alt="user avatar"
         />
-        <UserInfo currentProfile={this.props.currentProfile} userAddress={this.props.userAddress} />
+        <UserInfo currentUser={this.props.currentUser} currentProfile={this.props.currentProfile} userAddress={this.props.userAddress} handleNewMessage={this.props.handleNewMessage} />
         <div className="scrollers">
-          <UserAvailability currentProfile={this.props.currentProfile} currentUser={this.props.currentUser} handleJamRequest={this.props.handleJamRequest} />
+          <UserAvailability currentProfile={this.props.currentProfile} currentUser={this.props.currentUser} />
           <InstrumentList />
         </div>
         {/*<Interactions currentProfile={this.props.currentProfile} currentUser={this.props.currentUser} handleNewMessage={this.props.handleNewMessage} />*/}

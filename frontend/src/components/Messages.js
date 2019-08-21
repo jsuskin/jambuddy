@@ -7,7 +7,7 @@ export default class Messages extends Component {
     const users = this.props.users;
     const whichView = this.props.msgClass === 'received messages';
     const msgClass = whichView ? this.props.currentUser.received_messages : this.props.currentUser.sent_messages;
-    
+
     return (
       <div className="main-display-child messages">
         <h2 className="inbox-header">{whichView ? 'Inbox' : 'Sent Messages'} for {this.props.currentUser.username}</h2>
@@ -27,7 +27,6 @@ export default class Messages extends Component {
             </thead>
             <tbody>
               {msgClass.map(msg => {
-                // console.log(new Date(msg.created_at));
                 const inboxId = msgClass.indexOf(msg) + 1;
                 const createdAt = new Date(msg.created_at);
                 return (

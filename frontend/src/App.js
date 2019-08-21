@@ -98,20 +98,15 @@ export default class App extends Component {
   }
 
   handleGetMessages = () => {
-    this.setState({ view: 'messages', msgClass: 'received messages' })
+    this.setState({ view: 'messages', msgClass: 'received messages' });
   }
 
   handleNewMessage = () => {
-    this.setState({ view: 'new message' })
+    this.setState({ view: 'new message' });
   }
 
-  handleJamRequest = e => {
-    console.log(e.target.textContent);
-    if(this.props.currentUser === this.props.currentProfile) {
-      // this.setState({ view: 'edit profile' });
-    } else {
-      // fetch
-    }
+  handleGetJamSessions = () => {
+    this.setState({ view: 'jam sessions' });
   }
 
   renderRegister = () => {
@@ -124,7 +119,7 @@ export default class App extends Component {
     if(!this.state.currentUser) {
       return this.state.view === 'register' ? <Register /> : <Login handleSubmit={this.handleSubmit} />
     } else {
-      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} handleJamRequest={this.handleJamRequest} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} handleNewMessage={this.handleNewMessage} handleViewMsgClass={this.handleViewMsgClass} msgClass={this.state.msgClass} />
+      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} handleNewMessage={this.handleNewMessage} handleViewMsgClass={this.handleViewMsgClass} msgClass={this.state.msgClass} />
     }
   }
 
@@ -133,7 +128,7 @@ export default class App extends Component {
     // if(this.state.users[0]) console.log(this.state.users[0].created_at);
     return (
       <div>
-        <Header currentUser={this.state.currentUser} handleLogoClick={this.handleLogoClick} handleLogout={this.handleLogout} renderRegister={this.renderRegister} handleEditProfile={this.handleEditProfile} handleGetMessages={this.handleGetMessages} />
+        <Header currentUser={this.state.currentUser} handleLogoClick={this.handleLogoClick} handleLogout={this.handleLogout} renderRegister={this.renderRegister} handleEditProfile={this.handleEditProfile} handleGetMessages={this.handleGetMessages} handleGetJamSessions={this.handleGetJamSessions} />
         {this.renderWhich()}
       </div>
     );
