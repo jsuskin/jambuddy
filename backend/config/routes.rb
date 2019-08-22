@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :jam_locations
   resources :jam_requests
   resources :messages
   resources :user_availabilities

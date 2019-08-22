@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_21_185628) do
+ActiveRecord::Schema.define(version: 2019_08_22_045426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "jam_locations", force: :cascade do |t|
+    t.integer "street_number"
+    t.string "street_name"
+    t.string "city"
+    t.string "state"
+    t.integer "zip_code"
+    t.bigint "jam_request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jam_request_id"], name: "index_jam_locations_on_jam_request_id"
+  end
 
   create_table "jam_requests", force: :cascade do |t|
     t.string "weekday"
@@ -66,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_185628) do
     t.text "bio"
   end
 
+  add_foreign_key "jam_locations", "jam_requests"
   add_foreign_key "user_availabilities", "users"
   add_foreign_key "user_locations", "users"
 end

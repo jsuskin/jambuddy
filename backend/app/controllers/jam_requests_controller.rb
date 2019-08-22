@@ -15,7 +15,7 @@ class JamRequestsController < ApplicationController
 
   def show
     jam_request = JamRequest.find(params[:id])
-    render json: jam_request
+    render json: jam_request, include: :jam_location
   end
 
   def update
