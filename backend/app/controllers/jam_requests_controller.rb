@@ -1,7 +1,7 @@
 class JamRequestsController < ApplicationController
   def index
     @jam_requests = JamRequest.all
-    render json: @jam_requests
+    render json: @jam_requests, include: :jam_location
   end
 
   def create

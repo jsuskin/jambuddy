@@ -14,7 +14,7 @@ class JamLocationsController < ApplicationController
     if jam_location.valid?
       render json: jam_location
     else
-      render json: { errors: user_location.errors.full_messages }, status: 422 #unprocessable_entity
+      render json: { errors: jam_location.errors.full_messages }, status: 422 #unprocessable_entity
     end
   end
 
