@@ -472,19 +472,24 @@ select {
 .jam-sessions h1 {
   display: inline-block;
   padding: 10px 35px;
-  border: 1px solid #469CC8;
+  border: 2px dotted #469CC8;
   border-radius: 7px;
 }
 
 
 .pending-requests-scroller, .accepted-requests {
   /* border: 2px solid black; */
-  font-size: 13px;
+  font-size: 12.7px;
   margin: 0 auto;
   height: 19vh;
   width: 48vw;
   overflow: auto;
   word-wrap: break-word;
+}
+
+.cancel-session {
+  font-weight: 900;
+  cursor: pointer;
 }
 
 /* thead {
@@ -494,3 +499,9 @@ select {
 tbody {
 
 } */
+
+.form-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}

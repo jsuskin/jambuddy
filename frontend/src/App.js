@@ -14,7 +14,8 @@ export default class App extends Component {
     currentMessage: null,
     userAddress: '',
     view: 'login',
-    msgClass: 'received messages'
+    msgClass: 'received messages',
+    requestId: null
   }
 
   componentDidMount() {
@@ -109,6 +110,14 @@ export default class App extends Component {
     this.setState({ view: 'jam sessions' });
   }
 
+  handleSetLocation = (rId) => {
+    console.log(rId);
+    this.setState({
+      view: 'set location',
+      requestId: rId
+    });
+  }
+
   renderRegister = () => {
     this.setState({
       view: 'register'
@@ -119,13 +128,11 @@ export default class App extends Component {
     if(!this.state.currentUser) {
       return this.state.view === 'register' ? <Register /> : <Login handleSubmit={this.handleSubmit} />
     } else {
-      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} handleNewMessage={this.handleNewMessage} handleViewMsgClass={this.handleViewMsgClass} msgClass={this.state.msgClass} />
+      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} handleNewMessage={this.handleNewMessage} handleViewMsgClass={this.handleViewMsgClass} msgClass={this.state.msgClass} handleSetLocation={this.handleSetLocation} requestId={this.state.requestId} handleGetJamSessions={this.handleGetJamSessions} />
     }
   }
 
   render() {
-    console.log(this.state.currentUser);
-    // if(this.state.users[0]) console.log(this.state.users[0].created_at);
     return (
       <div>
         <Header currentUser={this.state.currentUser} handleLogoClick={this.handleLogoClick} handleLogout={this.handleLogout} renderRegister={this.renderRegister} handleEditProfile={this.handleEditProfile} handleGetMessages={this.handleGetMessages} handleGetJamSessions={this.handleGetJamSessions} />

@@ -6,13 +6,14 @@ import Messages from './Messages';
 import Message from './Message';
 import NewMessage from './NewMessage';
 import UserJamSessions from './UserJamSessions';
+import SetLocation from './SetLocation';
 
 export default class MainDisplay extends Component {
   render() {
     // console.log(this.props.currentUser);
     return (
       <div className="main-display">
-        <MapDisplay currentUser={this.props.currentUser} users={this.props.users} handleMarkerClick={this.props.handleMarkerClick} />
+        {<MapDisplay currentUser={this.props.currentUser} users={this.props.users} handleMarkerClick={this.props.handleMarkerClick} />}
         {(function(props) {
           // console.log(props.currentMessage);
           switch(props.currentView) {
@@ -27,7 +28,9 @@ export default class MainDisplay extends Component {
             case 'new message':
               return (<NewMessage currentUser={props.currentUser} currentProfile={props.currentProfile} />)
             case 'jam sessions':
-              return <UserJamSessions users={props.users} currentUser={props.currentUser} currentProfile={props.currentProfile} />
+              return <UserJamSessions users={props.users} currentUser={props.currentUser} currentProfile={props.currentProfile} handleSetLocation={props.handleSetLocation} handleGetJamSessions={props.handleGetJamSessions} />
+            case 'set location':
+              return <SetLocation currentUser={props.currentUser} requestId={props.requestId} handleGetJamSessions={props.handleGetJamSessions} />
             default:
               return;
           }
