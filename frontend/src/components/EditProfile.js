@@ -7,6 +7,8 @@ function range(size, startAt = 0) {
 
 export default class EditProfile extends Component {
   state = {
+    "instrument-name": '',
+    "years-playing": '',
     dayOfWeek: 'Sunday',
     startHours: '00',
     startMinutes: '00',
@@ -36,13 +38,39 @@ export default class EditProfile extends Component {
           "end_time": `${this.state.endHours}:${this.state.endMinutes}`,
           "user_id": this.state.userId
         })
-      });
+      }).then(this.props.handleGetProfile);
     } else { alert('Invalid Input') }
+  }
+
+  handleAddInstrument = e => {
+    e.preventDefault();
+    fetch(`http://localhost:3000/user_instruments`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: this.state["instrument-name"],
+        years_playing: this.state["years-playing"],
+        user_id: this.state.userId
+      })
+    }).then(this.props.handleGetProfile)
   }
 
   render() {
     return (
       <div className="edit-profile-form">
+        <form onSubmit={this.handleAddInstrument}>
+          <div className="add-instrument-form">
+            <h2>Add Instrument</h2>
+            <label htmlFor="instrument-name">Instrument</label>
+            <input type="text" name="instrument-name" onChange={this.handleChange} /><br/>
+            <label htmlFor="years-playing">Years Playing</label>
+            <input type="text" name="years-playing" onChange={this.handleChange} /><br/>
+          </div>
+          <input type="submit" />
+        </form>
+        <br/><br/>
         <form onSubmit={this.handleUpdateProfile}>
           <div className="availability-selection">
             <h2>Add Availability</h2>

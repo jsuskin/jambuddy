@@ -20,7 +20,7 @@ export default class MainDisplay extends Component {
             case 'profile':
               return (<Profile currentUser={props.currentUser} currentProfile={props.currentProfile} userAddress={props.userAddress}  handleNewMessage={props.handleNewMessage} />);
             case 'edit profile':
-              return (<EditProfile currentUser={props.currentUser} />);
+              return (<EditProfile currentUser={props.currentUser} handleGetProfile={props.handleGetProfile} />);
             case 'messages':
               return (<Messages currentUser={props.currentUser} users={props.users} handleViewMessage={props.handleViewMessage} handleViewMsgClass={props.handleViewMsgClass} msgClass={props.msgClass} />)
             case 'message':

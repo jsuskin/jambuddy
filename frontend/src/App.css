@@ -235,11 +235,15 @@ input {
   margin: 9px;
 }
 
-.current-availability-header, .instrument-list-header {
+.current-availability-header {
   margin: 9px;
 }
 
-.item {
+.instrument-list-header, .external-links-header {
+  margin: 2px;
+}
+
+.item, .ext-link {
   padding: 5px;
   text-align: center;
 }
@@ -263,7 +267,7 @@ input {
   cursor: pointer;
 }
 .user-jam-sessions {
-  margin: 9.8px 2px 0 11px;
+  margin: 10px 2px 0 11px;
   cursor: pointer;
 }
 
@@ -371,6 +375,7 @@ textarea {
 .edit-profile-form {
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #469CC8;
@@ -504,4 +509,18 @@ tbody {
   display: flex;
   align-items: center;
   text-align: center;
+}
+
+.instrument-list-container, .external-links-container {
+  height: 6.9vh;
+  font-size: 12px;
+}
+
+.instrument-list, .external-links {
+  height: 3vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

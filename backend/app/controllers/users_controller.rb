@@ -3,12 +3,12 @@ require 'json'
 class UsersController < ApplicationController
   def index
     users = User.all
-    render json: users, include: [{user_location: {only: [:latitude, :longitude]}}, {user_availabilities: {only: [:day_of_week, :start_time, :end_time, :id]}}, {sent_messages: {only: [:subject, :body, :receiver_id, :created_at]}}, {received_messages: {only: [:subject, :body, :sender_id, :created_at]}}, sent_jam_requests: {only: [:weekday, :month, :day, :year, :start_time, :end_time, :receiver_id, :status, :created_at]}, received_jam_requests: {only: [:weekday, :month, :day, :year, :start_time, :end_time, :sender_id, :status, :created_at]}]
+    render json: users, include: [{user_location: {only: [:latitude, :longitude]}}, {user_availabilities: {only: [:day_of_week, :start_time, :end_time, :id]}}, {sent_messages: {only: [:subject, :body, :receiver_id, :created_at]}}, {received_messages: {only: [:subject, :body, :sender_id, :created_at]}}, sent_jam_requests: {only: [:weekday, :month, :day, :year, :start_time, :end_time, :receiver_id, :status, :created_at]}, received_jam_requests: {only: [:weekday, :month, :day, :year, :start_time, :end_time, :sender_id, :status, :created_at]}, user_instruments: {only: [:name, :years_playing]}, external_links: {only: [:url, :user_id]}]
   end
 
   def show
     user = User.find(params[:id])
-    render json: user, include: [{user_location: {only: [:latitude, :longitude]}}, {user_availabilities: {only: [:day_of_week, :start_time, :end_time, :id]}}, {sent_messages: {only: [:subject, :body, :receiver_id, :created_at]}}, {received_messages: {only: [:subject, :body, :sender_id, :created_at]}}, sent_jam_requests: {only: [:weekday, :month, :day, :year, :start_time, :end_time, :receiver_id, :status, :created_at]}, received_jam_requests: {only: [:weekday, :month, :day, :year, :start_time, :end_time, :sender_id, :status, :created_at]}]
+    render json: user, include: [{user_location: {only: [:latitude, :longitude]}}, {user_availabilities: {only: [:day_of_week, :start_time, :end_time, :id]}}, {sent_messages: {only: [:subject, :body, :receiver_id, :created_at]}}, {received_messages: {only: [:subject, :body, :sender_id, :created_at]}}, sent_jam_requests: {only: [:weekday, :month, :day, :year, :start_time, :end_time, :receiver_id, :status, :created_at]}, received_jam_requests: {only: [:weekday, :month, :day, :year, :start_time, :end_time, :sender_id, :status, :created_at]}, user_instruments: {only: [:name, :years_playing]}, external_links: {only: [:url, :user_id]}]
   end
 
   def create

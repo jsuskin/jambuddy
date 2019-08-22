@@ -118,6 +118,10 @@ export default class App extends Component {
     });
   }
 
+  handleGetProfile = () => {
+    this.setState({ view: 'profile' });
+  }
+
   renderRegister = () => {
     this.setState({
       view: 'register'
@@ -128,7 +132,7 @@ export default class App extends Component {
     if(!this.state.currentUser) {
       return this.state.view === 'register' ? <Register /> : <Login handleSubmit={this.handleSubmit} />
     } else {
-      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} handleNewMessage={this.handleNewMessage} handleViewMsgClass={this.handleViewMsgClass} msgClass={this.state.msgClass} handleSetLocation={this.handleSetLocation} requestId={this.state.requestId} handleGetJamSessions={this.handleGetJamSessions} />
+      return <MainDisplay currentUser={this.state.currentUser} currentProfile={this.state.currentProfile} userAddress={this.state.userAddress} users={this.state.users} handleMarkerClick={this.handleMarkerClick} currentView={this.state.view} handleViewMessage={this.handleViewMessage} currentMessage={this.state.currentMessage} handleNewMessage={this.handleNewMessage} handleViewMsgClass={this.handleViewMsgClass} msgClass={this.state.msgClass} handleSetLocation={this.handleSetLocation} requestId={this.state.requestId} handleGetJamSessions={this.handleGetJamSessions} handleGetProfile={this.handleGetProfile} />
     }
   }
 

@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :user_availabilities
+  has_many :user_instruments
+  has_many :external_links
   has_one :user_location
 
   has_many :received_messages, foreign_key: :receiver_id, class_name: 'Message'
