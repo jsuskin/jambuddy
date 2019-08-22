@@ -477,11 +477,11 @@ select {
 }
 
 
-.pending-requests-scroller {
+.pending-requests-scroller, .accepted-requests {
   /* border: 2px solid black; */
   font-size: 13px;
   margin: 0 auto;
-  height: 17vh;
+  height: 19vh;
   width: 48vw;
   overflow: auto;
   word-wrap: break-word;

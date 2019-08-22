@@ -27,7 +27,7 @@ export default class MainDisplay extends Component {
             case 'new message':
               return (<NewMessage currentUser={props.currentUser} currentProfile={props.currentProfile} />)
             case 'jam sessions':
-              return <UserJamSessions users={props.users} currentUser={props.currentUser}/>
+              return <UserJamSessions users={props.users} currentUser={props.currentUser} currentProfile={props.currentProfile} />
             default:
               return;
           }
