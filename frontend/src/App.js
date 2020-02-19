@@ -29,23 +29,22 @@ export default class App extends Component {
   getAddress() {
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentProfile.user_location ? this.state.currentProfile.user_location.latitude : 40.7},${this.state.currentProfile.user_location ? this.state.currentProfile.user_location.longitude : -74}&key=${process.env.REACT_APP_GOOGLE_KEY}`)
       .then(res => res.json())
-      .then(data => this.setState({
+      .then(/*data => this.setState({
         userAddress: data.results[0].formatted_address
-      }))
+      })*/)
   }
 
   handleSubmit = e => {
     e.preventDefault();
-
-    const users = this.state.users,
-          usernameInput = e.target.username.value,
+    // debugger
+    const usernameInput = e.target.username.value,
           passwordInput = e.target.password.value,
-          result = bcrypt.compareSync(passwordInput, users.find(user => user.username === usernameInput).password_digest)
+          result = bcrypt.compareSync(passwordInput, this.state.users.find(user => user.username === usernameInput).password_digest)
 
-    if(users.map(user => user.username).includes(usernameInput) && result) {
+    if(this.state.users.map(user => user.username).includes(usernameInput) && result) {
       this.setState({
-        currentUser: users.find(user => user.username === usernameInput),
-        currentProfile: users.find(user => user.username === usernameInput),
+        currentUser: this.state.users.find(user => user.username === usernameInput),
+        currentProfile: this.state.users.find(user => user.username === usernameInput),
         view: 'profile'
       }, () => this.getAddress());
     }
@@ -137,6 +136,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.log(this.state.users);
     return (
       <div>
         <Header currentUser={this.state.currentUser} handleLogoClick={this.handleLogoClick} handleLogout={this.handleLogout} renderRegister={this.renderRegister} handleEditProfile={this.handleEditProfile} handleGetMessages={this.handleGetMessages} handleGetJamSessions={this.handleGetJamSessions} />

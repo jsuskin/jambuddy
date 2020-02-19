@@ -13,7 +13,7 @@ export default class MainDisplay extends Component {
     // console.log(this.props.currentUser);
     return (
       <div className="main-display">
-        {<MapDisplay currentUser={this.props.currentUser} users={this.props.users} handleMarkerClick={this.props.handleMarkerClick} />}
+        {/*<MapDisplay currentUser={this.props.currentUser} users={this.props.users} handleMarkerClick={this.props.handleMarkerClick} />*/}
         {(function(props) {
           // console.log(props.currentMessage);
           switch(props.currentView) {

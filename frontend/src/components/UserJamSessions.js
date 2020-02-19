@@ -33,9 +33,10 @@ export default class UserJamSessions extends Component {
       body: JSON.stringify({
         status: 'Accepted'
       })
-    }).then(this.props.handleGetJamSessions)
-    //.then(res => res.json()).then(acceptedRequest => this.setState({ acceptedRequests: [...this.state.acceptedRequests, acceptedRequest] }));
-    // this.forceUpdate();
+    }).then(res => res.json()).then(acceptedRequest => {
+      this.setState({ acceptedRequests: [...this.state.acceptedRequests, acceptedRequest] });
+      return this.props.handleGetJamSessions();
+    });
   }
 
   handleRejectRequest = e => {
@@ -85,7 +86,7 @@ export default class UserJamSessions extends Component {
                     const reqId = req.id;
                     const date = `${req.month} ${req.day}, ${req.year}`
                     return (
-                      <tr className="pending-request-row" key={"pending-" + rowId('Pending', req)} id={`pe-req-${rowId}`}>
+                      <tr className="pending-request-row" key={"pending-" + rowId('Pending', req)} id={`pe-req-${reqId}`}>
                         <td>{rowId('Pending', req)}</td>
                         <td>{req.weekday}</td>
                         <td>{date}</td>
@@ -128,9 +129,9 @@ export default class UserJamSessions extends Component {
                   if(req.status !== 'Accepted') return null;
                   const reqId = req.id;
                   const date = `${req.month} ${req.day}, ${req.year}`
-                  const rowId = (type = "Accepted", request = req) => requests.filter(r => r.status === type).indexOf(request) + 1;
+                  // const rowId = (type = "Accepted", request = req) => requests.filter(r => r.status === type).indexOf(request) + 1;
                   return (
-                    <tr className="accepted-request-row" key={`accepted-${rowId()}`} id={`ac-req-${rowId()}`}>
+                    <tr className="accepted-request-row" key={`accepted-${rowId("Accepted", req)}`} id={`ac-req-${rowId("Accepted", req)}`}>
                       <td>{rowId('Accepted', req)}</td>
                       <td>{req.weekday}</td>
                       <td>{date}</td>

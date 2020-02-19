@@ -7,8 +7,8 @@ const Header = props => {
         {props.currentUser ? (
           <div className="greeting">
             <p>Logged in as {props.currentUser.username}</p>
-            <span className="user-jam-sessions" role="img" onClick={props.handleGetJamSessions}>👥</span>
-            <span className="messages-link" role="img" onClick={props.handleGetMessages}>✉️</span>
+            <span className="user-jam-sessions header-icon" role="img" onClick={props.handleGetJamSessions}>👥</span>
+            <span className="messages-link header-icon" role="img" onClick={props.handleGetMessages}>✉️</span>
             <button className="edit-profile-btn header-btn" onClick={props.handleEditProfile}>Edit Profile</button>
             <button className="logout-btn header-btn" onClick={props.handleLogout}>Log out</button>
           </div>

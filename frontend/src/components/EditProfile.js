@@ -9,6 +9,7 @@ export default class EditProfile extends Component {
   state = {
     "instrument-name": '',
     "years-playing": '',
+    url: '',
     dayOfWeek: 'Sunday',
     startHours: '00',
     startMinutes: '00',
@@ -57,9 +58,31 @@ export default class EditProfile extends Component {
     }).then(this.props.handleGetProfile)
   }
 
+  handleAddExtLink = e => {
+    e.preventDefault();
+    fetch(`http://localhost:3000/external_links`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        url: this.state.url,
+        user_id: this.state.userId
+      })
+    }).then(this.props.handleGetProfile)
+  }
+
   render() {
     return (
       <div className="edit-profile-form">
+        <form onSubmit={this.handleAddExtLink}>
+          <div className="add-ext-link-form">
+            <h2>Add External Link</h2>
+            <label htmlFor="url">URL</label>
+            <input type="text" name="url" onChange={this.handleChange} /><br/>
+          </div>
+          <input type="submit"/>
+        </form>
         <form onSubmit={this.handleAddInstrument}>
           <div className="add-instrument-form">
             <h2>Add Instrument</h2>
@@ -70,7 +93,6 @@ export default class EditProfile extends Component {
           </div>
           <input type="submit" />
         </form>
-        <br/><br/>
         <form onSubmit={this.handleUpdateProfile}>
           <div className="availability-selection">
             <h2>Add Availability</h2>
